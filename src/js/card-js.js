@@ -1261,7 +1261,7 @@ CardJs.prototype.setupExpiryInput = function() {
         $this.expiryMonthYearInput.val(CardJs.applyFormatMask("0" + val, CardJs.EXPIRY_MASK));
       }
       
-      if(val.length == 5 && parseInt(val.substr(0,2)) > 12 && CardJs.keyIsNumber(e)) {
+      if(val.length > 4 && parseInt(val.substr(0,2)) > 12) {
         $this.expiryMonthYearInput.val(CardJs.applyFormatMask("0" + parseInt(val.substr(0,2)), CardJs.EXPIRY_MASK));
       }
 
