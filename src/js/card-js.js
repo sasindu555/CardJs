@@ -1260,6 +1260,10 @@ CardJs.prototype.setupExpiryInput = function() {
       if(val.length == 1 && parseInt(val) > 1 && CardJs.keyIsNumber(e)) {
         $this.expiryMonthYearInput.val(CardJs.applyFormatMask("0" + val, CardJs.EXPIRY_MASK));
       }
+      
+      if(val.length > 1 && parseInt(val.substr(0,2)) == 0) {
+        $this.expiryMonthYearInput.val(CardJs.applyFormatMask("0", CardJs.EXPIRY_MASK));
+      }
 
       if(!$this.EXPIRY_USE_DROPDOWNS && $this.expiryMonthYearInput != null) {
         $this.expiryMonthInput.val($this.expiryMonth());
