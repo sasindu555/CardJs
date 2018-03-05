@@ -225,7 +225,7 @@ CardJs.keyIsNumber = function(e) {
  */
 CardJs.keyIsTopNumber = function(e) {
   var keyCode = CardJs.keyCodeFromEvent(e);
-  return keyCode >= CardJs.KEYS["0"] && keyCode <= CardJs.KEYS["9"];
+  return keyCode >= CardJs.KEYS["0"] && keyCode <= CardJs.KEYS["9"] && !e.shiftKey;
 };
 
 
@@ -1263,6 +1263,10 @@ CardJs.prototype.setupExpiryInput = function() {
       
       if(val.length > 1 && parseInt(val.substr(0,2)) == 0) {
         $this.expiryMonthYearInput.val(CardJs.applyFormatMask("0", CardJs.EXPIRY_MASK));
+      }
+      
+      if(val.length > 4 && parseInt(val.substr(0,2)) > 12) {
+        $this.expiryMonthYearInput.val(CardJs.applyFormatMask("0" + parseInt(val.substr(0,2)), CardJs.EXPIRY_MASK));
       }
 
       if(!$this.EXPIRY_USE_DROPDOWNS && $this.expiryMonthYearInput != null) {
