@@ -225,7 +225,7 @@ CardJs.keyIsNumber = function(e) {
  */
 CardJs.keyIsTopNumber = function(e) {
   var keyCode = CardJs.keyCodeFromEvent(e);
-  return keyCode >= CardJs.KEYS["0"] && keyCode <= CardJs.KEYS["9"];
+  return keyCode >= CardJs.KEYS["0"] && keyCode <= CardJs.KEYS["9"] && !e.shiftKey;
 };
 
 
